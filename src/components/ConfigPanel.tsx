@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import {useEffect, useState  } from "react";
 
 interface ConfigPanelProps {
   settings: {
@@ -18,7 +18,6 @@ export const ConfigPanel = ({ settings, onChange }: ConfigPanelProps) => {
     settings.reasoningEffort
   );
 
-  // Notificar cambios al padre
   useEffect(() => {
     onChange({ temperature, topK, topP, reasoningEffort });
   }, [temperature, topK, topP, reasoningEffort]);
@@ -26,20 +25,19 @@ export const ConfigPanel = ({ settings, onChange }: ConfigPanelProps) => {
   const handleTopKChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setTopK(value);
-    if (value !== "") setTopP(""); // desactiva Top P
+    if (value !== "") setTopP("");
   };
 
   const handleTopPChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setTopP(value);
-    if (value !== "") setTopK(""); // desactiva Top K
+    if (value !== "") setTopK("");
   };
 
   return (
     <div>
       <h2 className="text-lg font-semibold mb-4">Configuración del chat</h2>
       <div className="space-y-4">
-        {/* Temperatura */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Temperatura (0 - 2)
@@ -55,7 +53,6 @@ export const ConfigPanel = ({ settings, onChange }: ConfigPanelProps) => {
           />
         </div>
 
-        {/* Top-K */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Top K (0 - 20)
@@ -71,7 +68,6 @@ export const ConfigPanel = ({ settings, onChange }: ConfigPanelProps) => {
           />
         </div>
 
-        {/* Top-P */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Top P (0 - 1)
@@ -88,7 +84,6 @@ export const ConfigPanel = ({ settings, onChange }: ConfigPanelProps) => {
           />
         </div>
 
-        {/* Reasoning Effort */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Esfuerzo de razonamiento
