@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
-import { ConfigPanel } from '@components/ConfigPanel'
+import { ConfigPanel } from './ConfigPanel'
 
 interface Message {
   id: string
